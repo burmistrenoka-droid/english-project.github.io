@@ -1,0 +1,278 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #2c3e50;
+    color: white;
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #e74c3c;
+}
+
+.nav-links .disabled {
+    color: #95a5a6;
+    cursor: not-allowed;
+}
+
+.nav-search {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.nav-search input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 3px;
+}
+
+.sign-in {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-report {
+    margin: 2rem 0;
+}
+
+.report-date {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #ecf0f1;
+}
+
+.report-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.outline-btn {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+/* Sections */
+.content-section {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.featured-spots {
+    background: white;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.spots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.spot-card {
+    background: #ecf0f1;
+    padding: 2rem;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.spot-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Culture Section */
+.culture-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.culture-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Architecture Section */
+.architecture-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.arch-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Vocabulary Section */
+.vocabulary-section {
+    background: #2c3e50;
+    color: white;
+    padding: 3rem 2rem;
+}
+
+.vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.vocab-card {
+    background: #34495e;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.vocab-card ul {
+    list-style: none;
+}
+
+.vocab-card li {
+    margin: 0.5rem 0;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid #4a6572;
+}
+
+/* Footer */
+footer {
+    background: #34495e;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .architecture-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+}
+// Add interactive features
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Interactive report button
+    const reportBtn = document.querySelector('.report-btn');
+    if (reportBtn) {
+        reportBtn.addEventListener('click', function() {
+            alert('Full autumn color report would be displayed here! This feature is for demonstration.');
+        });
+    }
+
+    // Vocabulary quiz
+    const vocabCards = document.querySelectorAll('.vocab-card');
+    vocabCards.forEach(card => {
+        card.addEventListener('click', function() {
+            this.style.transform = 'scale(1.02)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 200);
+        });
+    });
+
+    // Search functionality (basic)
+    const searchInput = document.querySelector('.nav-search input');
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                alert('Search functionality would show results for: ' + this.value);
+                this.value = '';
+            }
+        });
+    }
+});
